@@ -1,4 +1,4 @@
-import React, {useState} from 'react';
+import React, {useEffect, useState} from 'react';
 import logo from './logo.svg';
 import './App.css';
 import { buildQueries } from '@testing-library/dom';
@@ -28,6 +28,7 @@ function App() {
       <header className="App-header">
         <p style={{color:'red'}}>Gadget X Official Store</p>
         <Counter></Counter>
+        <Users></Users>
         <ul>
           {
             heroes.map(hero => <li>{hero}</li>)
@@ -65,6 +66,29 @@ function Counter(){
       <h1>Count: {count}</h1>
       <button onClick = {() => setCount(count - 1)}>Decrease </button>
       <button onClick={ () =>  setCount(count + 1)}>Increase</button>
+    </div>
+  )
+}
+function Users(){
+  const [users, setUsers] = useState([]);
+  useEffect(()=>{
+    //console.log('calling Effect')
+    fetch('https://jsonplaceholder.typicode.com/users')
+    .then(res => res.json())
+    .then(data => setUsers(data));
+    // .then(data => console.log(data));
+  },[])
+  return(
+    <div>
+      <h3>Dynamic Users: {users.length}</h3>
+      <ul>
+        {
+          users.map(user => <li>{user.name}</li>)
+        }
+      </ul>
+      {/* {
+        console.log(users)
+      } */}
     </div>
   )
 }
