@@ -1,3 +1,4 @@
+import React, {useState} from 'react';
 import logo from './logo.svg';
 import './App.css';
 import { buildQueries } from '@testing-library/dom';
@@ -26,6 +27,7 @@ function App() {
     <div className="App">
       <header className="App-header">
         <p style={{color:'red'}}>Gadget X Official Store</p>
+        <Counter></Counter>
         <ul>
           {
             heroes.map(hero => <li>{hero}</li>)
@@ -48,6 +50,15 @@ function App() {
       </header>
     </div>
   );
+}
+
+function Counter(){
+  const [count, setCount] = useState(10);
+  return(
+    <div>
+      <h1>Count: {count}</h1>
+    </div>
+  )
 }
 function Product(props){
   const productStyle={
