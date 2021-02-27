@@ -11,16 +11,36 @@ function App() {
     color: 'red',
     backgroundColor: 'blue'
   }
-  const heroes= ['Anwar', 'Badshah', 'Elias','Salman']
+  const heroes= ['Anwar', 'Badshah', 'Elias','Salman', 'Shuvo']
   const products= [
     {name: 'Photoshop',  price:'$90.99'},
      {name: 'Illustrator', price: '$60.99'},
-     {name: 'PDF Reader', price: '$5.99'}
+     {name: 'PDF Reader', price: '$5.99'},
+     {name: 'Premiere El', price: '$234.99'},
 ]
+//  const productNames = products.map(product => product.name)
+//  console.log(productNames);
+//  const heroNames = heroes.map(hero => hero);
+//  console.log(heroNames);
   return (
     <div className="App">
       <header className="App-header">
         <p style={{color:'red'}}>Gadget X Official Store</p>
+        <ul>
+          {
+            heroes.map(hero => <li>{hero}</li>)
+          }
+          {
+            products.map(product=><li>{product.name}</li>)
+          }
+          {/* <li>{heroes[0]}</li>
+          <li>{heroes[1]}</li>
+          <li>{heroes[2]}</li>
+          <li>{heroes[3]}</li> */}
+        </ul>
+        {
+          products.map(product => <Product product={product}></Product>)
+        }
         <Product product={products[0]}></Product>
       <Product product={products[1]}></Product>
       <Product product={products[2]}></Product>
